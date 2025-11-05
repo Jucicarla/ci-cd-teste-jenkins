@@ -1,13 +1,16 @@
+//const { allureId } = require("allure-cypress");
+//const { config } = require("chai");
 const { defineConfig } = require("cypress");
+const {allureCypress}  = require ("allure-cypress/reporter");
 
 module.exports = defineConfig({
-  reporter: 'mocha-allure-reporter',
-  reporterOptions: {
-  resultsDir: 'allure-results'
-  },
+
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      allureCypress(on, config, {
+        resultsDir: "allure-results",
+      });
+      return config;
     },
     video: true
   },
