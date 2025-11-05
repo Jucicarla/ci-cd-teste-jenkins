@@ -23,5 +23,5 @@ jobs:
     - name: Instalar dependencias
       run: npm install
     - name: Executar teste
-      run: npx test 
+      run: npm test 
   
