@@ -6,6 +6,7 @@
   "scripts": {
     "test": "npx cypress run --browser chrome",
     "report": "npx allure serve --clean allure-results",
+    "report:generate": "npx allure generate --clean allure-results --output allure-report",
     "test-chrome": "npx cypress run --browser chrome",
     "teste-suite-1": "npx cypress run --spec \"cypress/e2e/1-getting-started/*\"",
     "teste-suite-2": "npx cypress run --browser chrome --spec \"cypress/e2e/2-advanced-examples/*\"",

@@ -9,9 +9,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
 
     steps:
     - uses: actions/checkout@v4
@@ -23,5 +21,12 @@ jobs:
     - name: Instalar dependencias
       run: npm install
     - name: Executar teste
-      run: npm test 
+      run: npm test
+    - name: Gerar relatorio Allure
+      run: npm run report:generate 
+    - name: Publicar o relatorio no Gh Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
   
