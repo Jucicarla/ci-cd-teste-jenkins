@@ -6,6 +6,7 @@ name: Teste CI - Cypress
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,13 +21,16 @@ jobs:
         cache: 'npm'
     - name: Instalar dependencias
       run: npm install
+      
     - name: Executar teste
       run: npm test
+
     - name: Gerar relatorio Allure
       run: npm run report:generate 
+
     - name: Publicar o relatorio no Gh Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+        publish_dir: ./allure-report
   
